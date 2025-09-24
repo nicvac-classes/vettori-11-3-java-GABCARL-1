@@ -5,22 +5,106 @@ import java.util.Scanner;
 
 // Classe principale, con metodo main
 class Esercizio {
-    // Il programma parte con una chiamata a main().
-    public static void main(String args[])
-    {
-        //Variabili del programma
-        String nome;
 
-        //Creo l'oggetto in per l'input da tastiera
-        Scanner in = new Scanner( System.in );
+    private static Scanner in = new Scanner(System.in);
 
-        //Leggo l'input da tastiera
-        System.out.print("Inserisci il tuo nome: ");
-        nome = in.nextLine();
+    private static void azzeraVettore(int[] V, int N){
+        int i = 0;
+        while(i < N){
+            V[i] = 0;
+            ++i;
+        }
+    }
 
-        //Output del nome acquisito da tastiera
-        System.out.println("Ciao "+nome+"!");
+    private static int leggiOperazione(){
+        int opzione;
+
+        do{
+            System.out.print("\nMENU: \n-1 Inserisci elemento \n-2 Elimina elemento \n-3 Ricerca elemento \n-4 Elimina duplicati \n-5 Visualizza vettore \n-6 Esci dal programma \nScelta: ");
+            opzione = Integer.parseInt(in.nextLine());
+            if(opzione < 1 || opzione > 6){
+                System.out.println("Inserire un operazione valida!");
+            }
+        }while(opzione < 1 || opzione > 6);
+
+        System.out.println();
+        
+        return opzione;
+    }
+
+    private static int inserireElemento(int[] V, int N){
+        return N;
+    }
+
+    private static int eliminaElemento(int[] V, int N){
+        return N;
+    }
+
+    private static int ricercaElemento(int[] V, int N, int e){
+        int i = 0;
+        boolean trovato = false;
+        while(i < N && trovato == false){
+            if(e == V[i]){
+                trovato = true;
+            }else{
+                ++i;
+            }
+        }
+        return i;
+    }
+
+    private static int eliminaDuplicati(int[] V, int N){
+        return N;
+    }
+
+    private static void visualizzaVettore(int[] V, int N){
+        int i = 0;
+        while(i < N){
+            System.out.println("Cella N." + i + " - Valore: " + V[i]);
+            ++i;
+        }
+    }
+    public static void main(String args[]){
+      
+        System.out.print("Inserire grandezza vettore: ");
+        int N = Integer.parseInt(in.nextLine());
+        int[] V = new int[N * 10];
+        azzeraVettore(V, N);
+
+        int scelta;
+        int valore;
+        int posizione;
+
+        do{
+
+           scelta = leggiOperazione();
+            if(scelta == 1){
+                //N = inserireElemento(V,N);
+            }
+            if(scelta == 2){
+                //N = eliminaElemento(V,N);
+            }
+            if(scelta == 3){
+
+                posizione = -1;
+
+                System.out.print("Inserire valore da ricercare nel vettore: ");
+                valore = Integer.parseInt(in.nextLine());
+
+                posizione = ricercaElemento(V,N,valore);
+                if(posizione != -1){
+                    System.out.println("Elemento trovato nella posizione: " + posizione);
+                }else{
+                    System.out.println("Elemento non presente nel vettore!");
+                }
+            }
+            if(scelta == 4){
+                //N = eliminaDuplicati(V,n);
+            }
+            if(scelta == 5){
+                visualizzaVettore(V,N);
+            }
+        }while(scelta != 6);
     }
 }
 
-//LEGGERE LE ISTRUZIONI NEL FILE README.md
